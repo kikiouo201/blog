@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+</head>
+
+<body>
+    <form name="editform" action="userEdit" method="post" accept-charset="utf-8">
+        <h1>Account - Edit</h1>
+        <input type="hidden" name="id" value="<%=data[0].id  %>" />
+        <div>
+            <label>userid：</label>
+            <input type="text" name="userid" placeholder="userid" value="<%=data[0].userid %>"  />
+        </div>
+        <div>
+            <input type='submit' value='Submit'>
+            <input type='reset' value='Reset'>
+            <input type='button' value='Back' onclick="javascript: window.history.back();">
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.article{
+  background-color: burlywood;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px gainsboro;
+  width: 90%;
+  margin: 40px 40px 40px 40px;
+  padding: 30px;
+}
+
+.article tr th{
+  font-size: 35px;
+}
+
+.addarticle{
+  background-color:gainsboro;
+  height: 450px;
+  width: 90%;
+  margin: 40px 40px 40px 20px;
+  padding: 30px;
+  
+}
+.articlesize{
+  background-color:palegoldenrod;
+  width: 100%;
+  margin-bottom:20px;
+}
+.context{
+  height: 50%;
+}
+.title{
+  height: 10%;
+ 
+ 
+}
+.author{
+  height: 10%;
+
+}

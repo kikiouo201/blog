@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+ 
+</head>
+
+<body >
+  <table class="article">
+    <tr>
+      <th>
+        雞尾鸚鵡
+      </th>
+    </tr>
+    <tr>
+      <td>
+        2020/02/16 喵喵先生
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &emsp;&emsp;雞尾鸚鵡（學名：Nymphicus
+        hollandicus），鳳頭鸚鵡科雞尾鸚鵡屬的一種鳥類，也稱作玄鳳鸚鵡。因日本於明治後期（約1910年）引進，因此在台灣又名；歐卡妹（「オカメインコ」的音譯，日名源自此鳥臉頰橙紅斑點很像阿龜面具（Okame）），似乎有誤稱或再簡化為卡妹（カメイ龜井Kamei）的趨勢，是澳洲特有的鳳頭鸚鵡，是最常見的寵物鳥。
+      </td>
+    </tr>
+  </table>
+  <% for ( var i = 0 ; i < articles.length ; i++){ %>
+  <table class="article">
+    <tr>
+      <th>
+        <%= articles[i].title  %>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <%= articles[i].date %>
+        <%= articles[i].name %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        &emsp;&emsp; <%= articles[i].content %>
+      </td>
+    </tr>
+  </table>
+  <% } %>
+
+ 
+ 
+  <script>
+    function Edit(id) {
+      window.location.href = "/userEdit?id=" + id;
+    }
+    function ok(id) {
+      window.location.href = "/?id=" + id;
+    }
+    function Delete(id) {
+      var rs = confirm('Confirm to delete?');
+      if (rs) {
+        window.location.href = "/userDelete?id=" + id;
+      }
+    }
+    function Search() {
+
+      var userid = document.getElementsByName('suserid')[0].value;
+      window.location.href = "/?user=" + userid;;
+    }
+   
+  </script>
+
+
+  <form class="addarticle" name="addform" action="userAdd" method="post" accept-charset="utf-8" >
+    <h1>發文</h1>
+    <div>
+ 
+        <label>名子：</label>
+        <input class="author articlesize" type="text" name="name" placeholder="name" />
+        <label>標題：</label>
+        <input class="author articlesize" type="text" name="title" placeholder="title" />
+        <label>內容：</label>
+        <input class="context articlesize" type="text" name="content" placeholder="content" />
+        
+    </div>
+    <div>
+        <input type='submit' value='Submit' >
+        <input type='reset' value='Reset'>
+       
+    </div>
+    
+</form>
+  
+</body>
+
+</html>
