@@ -9,13 +9,13 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
 
-  var db = req.con;
-  var data = "";
+  const db = req.con;
+  let data = "";
 
 
-  var user = req.query.user;
+  const user = req.query.user;
 
-  var filter = "";
+  let filter = "";
   if (user) {
       filter = 'WHERE name = ?';
   }
@@ -24,18 +24,18 @@ router.get('/', function(req, res, next) {
       if (err) {
           console.log(err);
       }
-      var articles = rows;
+      let articles = rows;
 
-      for(var i=0;i<articles.length ; i++){
-            var date= articles[i].date;
-            var y = date.getFullYear();  
-            var m = date.getMonth() + 1;  
+      for(let i=0;i<articles.length ; i++){
+            let date= articles[i].date;
+            let y = date.getFullYear();  
+            let m = date.getMonth() + 1;  
             m = m < 10 ? '0' + m : m;  
-            var d = date.getDate();  
+            let d = date.getDate();  
             d = d < 10 ? ('0' + d) : d;  
-            var h = date.getHours();  
+            let h = date.getHours();  
             h=h < 10 ? ('0' + h) : h;  
-            var minute = date.getMinutes();  
+            let minute = date.getMinutes();  
             minute = minute < 10 ? ('0' + minute) : minute; 
             articles[i].date= y + '/' + m + '/' + d+' '+h+':'+minute;  
       }
@@ -48,13 +48,13 @@ router.get('/', function(req, res, next) {
 });
 router.post('/', function(req, res, next) {
     
-    var db = req.con;
-    var dt = new Date();
+    const db = req.con;
+    let dt = new Date();
     
 
    
    
-    var sql = {
+    let sql = {
         id: req.body.userid,
         name: req.body.name,
         content: req.body.content,
@@ -64,7 +64,7 @@ router.post('/', function(req, res, next) {
     };
   
    
-    var qur = db.query('INSERT INTO article SET ?', sql, function(err, rows) {
+    let qur = db.query('INSERT INTO article SET ?', sql, function(err, rows) {
         if (err) {
             console.log(err);
         }
@@ -81,9 +81,9 @@ router.get('/add', function(req, res, next) {
 
 router.post('/userAdd', function(req, res, next) {
 
-  var db = req.con;
-  var dt = new Date();
-  var sql = {
+  const db = req.con;
+  let dt = new Date();
+  let sql = {
       name: req.body.name,
       content: req.body.content,
       title: req.body.title,
@@ -93,7 +93,7 @@ router.post('/userAdd', function(req, res, next) {
   };
 
   //console.log(sql);
-  var qur = db.query('INSERT INTO article SET ?', sql, function(err, rows) {
+  let qur = db.query('INSERT INTO article SET ?', sql, function(err, rows) {
       if (err) {
           console.log(err);
       }
@@ -105,16 +105,16 @@ router.post('/userAdd', function(req, res, next) {
 
 router.get('/userEdit', function(req, res, next) {
 
-  var id = req.query.id;
-  var db = req.con;
-  var data = "";
+  const id = req.query.id;
+  const db = req.con;
+  let data = "";
 
   db.query('SELECT * FROM subsidies WHERE id = ?', id, function(err, rows) {
       if (err) {
           console.log(err);
       }
 
-      var data = rows;
+      let data = rows;
       res.render('userEdit', { title: 'Edit Account', data: data });
   });
 
@@ -122,15 +122,15 @@ router.get('/userEdit', function(req, res, next) {
 
 router.post('/userEdit', function(req, res, next) {
 
-  var db = req.con;
-  var id = req.body.id;
+  const db = req.con;
+  const id = req.body.id;
 
-  var sql = {
+  let sql = {
       name: req.body.userid
      
   };
 
-  var qur = db.query('UPDATE subsidies SET ? WHERE id = ?', [sql, id], function(err, rows) {
+  let qur = db.query('UPDATE subsidies SET ? WHERE id = ?', [sql, id], function(err, rows) {
       if (err) {
           console.log(err);
       }
@@ -143,10 +143,10 @@ router.post('/userEdit', function(req, res, next) {
 
 router.get('/userDelete', function(req, res, next) {
 
-  var id = req.query.id;
-  var db = req.con;
+  const id = req.query.id;
+  const db = req.con;
 
-  var qur = db.query('DELETE FROM subsidies WHERE id = ?', id, function(err, rows) {
+  let qur = db.query('DELETE FROM subsidies WHERE id = ?', id, function(err, rows) {
       if (err) {
           console.log(err);
       }

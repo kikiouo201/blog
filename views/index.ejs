@@ -26,7 +26,7 @@
       </td>
     </tr>
   </table>
-  <% for ( var i = 0 ; i < articles.length ; i++){ %>
+  <% for ( let i = 0 ; i < articles.length ; i++){ %>
   <table class="article">
     <tr>
       <th>
@@ -57,14 +57,14 @@
       window.location.href = "/?id=" + id;
     }
     function Delete(id) {
-      var rs = confirm('Confirm to delete?');
+      let rs = confirm('Confirm to delete?');
       if (rs) {
         window.location.href = "/userDelete?id=" + id;
       }
     }
     function Search() {
 
-      var userid = document.getElementsByName('suserid')[0].value;
+      let userid = document.getElementsByName('suserid')[0].value;
       window.location.href = "/?user=" + userid;;
     }
    
